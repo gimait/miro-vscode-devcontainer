@@ -126,7 +126,7 @@ export MIRO_ROBOT_IP=10.125.85.167
 source /workspaces/consequential/mdk/setup.bash
 source /opt/ros/noetic/setup.bash
 
-#export ROS_MASTER_URI=http://localhost:11311
+export ROS_MASTER_URI=http://localhost:11311
 export ROS_IP=$(ifconfig wlp2s0 | sed -En 's/127.0.0.1//;s/.*inet (addr:)?(([0-9]*\.){3}[0-9]*).*/\2/p')
 
 
