@@ -81,7 +81,7 @@ RUN wget https://packages.osrfoundation.org/gazebo.key -O - | sudo apt-key add -
 RUN apt-get update \
     # Remove old gazebo
     && apt-get remove -y ros-kinetic-gazebo* \
-    gazebo9 gazebo9-* ros-kinetic-gazebo9-*
+    && apt-get install -y gazebo9 gazebo9-* ros-kinetic-gazebo9-*
     #ros-kinetic-catkin rviz ros-kinetic-controller-manager ros-kinetic-joint-state-controller \
     #ros-kinetic-ros-control ros-kinetic-ros-controllers \
 
@@ -118,6 +118,6 @@ COPY --from=libogre /tmp/libogre/usr/local/include/OGRE /usr/local/include/OGRE
 # Add the devcontainer config
 COPY config/.bashrc /root/.bashrc
 RUN mkdir /root/.miro2/ && ln -s /workspaces/consequential/mdk/share/config /root/.miro2/config
-RUN ln -s /workspaces/consequential/mkd /root/mdk
+RUN ln -s /workspaces/consequential/mdk /root/mdk
 #COPY config/user_setup.bash /root/.miro2/config/user_setup.bash
 
