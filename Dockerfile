@@ -64,7 +64,6 @@ RUN cd /workspaces/ogre/ogre-1.9.1/build && \
     make DESTDIR=/tmp/libogre install
 
 # Add libraries to xenial
-#FROM ros:kinetic-ros-base-xenial
 FROM osrf/ros:kinetic-desktop-full
 
 RUN apt-get update \
@@ -73,7 +72,8 @@ RUN apt-get update \
     python python-matplotlib python-tk ffmpeg wget \
     net-tools python-pip
 
-RUN pip install apriltag signals
+RUN pip install --upgrade pip
+RUN pip install apriltag signals flake8
 
 # Upgrade gazebo
 RUN echo "deb http://packages.osrfoundation.org/gazebo/ubuntu-stable `lsb_release -cs` main" > /etc/apt/sources.list.d/gazebo-stable.list
@@ -82,8 +82,6 @@ RUN apt-get update \
     # Remove old gazebo
     && apt-get remove -y ros-kinetic-gazebo* \
     && apt-get install -y gazebo9 gazebo9-* ros-kinetic-gazebo9-*
-    #ros-kinetic-catkin rviz ros-kinetic-controller-manager ros-kinetic-joint-state-controller \
-    #ros-kinetic-ros-control ros-kinetic-ros-controllers \
 
     # Clean up
 RUN rosdep update \
@@ -119,5 +117,4 @@ COPY --from=libogre /tmp/libogre/usr/local/include/OGRE /usr/local/include/OGRE
 COPY config/.bashrc /root/.bashrc
 RUN mkdir /root/.miro2/ && ln -s /workspaces/consequential/mdk/share/config /root/.miro2/config
 RUN ln -s /workspaces/consequential/mdk /root/mdk
-#COPY config/user_setup.bash /root/.miro2/config/user_setup.bash
 

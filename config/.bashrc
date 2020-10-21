@@ -133,6 +133,7 @@ if [[ $(ifconfig | grep wlp2s0) ]]
 then
     export ROS_IP=$(ifconfig wlp2s0 | sed -En 's/127.0.0.1//;s/.*inet (addr:)?(([0-9]*\.){3}[0-9]*).*/\2/p')
 elif [[ $(ifconfig | grep eno1) ]]
+then
     export ROS_IP=$(ifconfig eno1 | sed -En 's/127.0.0.1//;s/.*inet (addr:)?(([0-9]*\.){3}[0-9]*).*/\2/p')
 fi
 
