@@ -73,7 +73,7 @@ RUN apt-get update \
     net-tools python-pip
 
 RUN pip install --upgrade pip
-RUN pip install apriltag signals flake8
+RUN pip install apriltag signals flake8 getkey
 
 # Upgrade gazebo
 RUN echo "deb http://packages.osrfoundation.org/gazebo/ubuntu-stable `lsb_release -cs` main" > /etc/apt/sources.list.d/gazebo-stable.list
