@@ -66,14 +66,14 @@ RUN cd /workspaces/ogre/ogre-1.9.1/build && \
 # Add libraries to xenial
 FROM osrf/ros:kinetic-desktop-full
 
+# Install tools
 RUN apt-get update \
-    # Install tools
     && apt-get -y install build-essential cmake cppcheck valgrind htop git\
     python python-matplotlib python-tk ffmpeg wget \
     net-tools python-pip
-
-RUN pip install --upgrade pip
-RUN pip install apriltag signals flake8 getkey
+RUN pip install --upgrade pip && \
+    pip install apriltag signals flake8 && \
+    pip install getkey
 
 # Upgrade gazebo
 RUN echo "deb http://packages.osrfoundation.org/gazebo/ubuntu-stable `lsb_release -cs` main" > /etc/apt/sources.list.d/gazebo-stable.list
