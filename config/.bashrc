@@ -139,3 +139,6 @@ fi
 
 export ROS_PACKAGE_PATH=$MIRO_PATH_MDK/share:$ROS_PACKAGE_PATH
 export PYTHONPATH=$MIRO_PATH_MDK/share:$PYTHONPATH
+
+# For gazebo plugin development:
+export GAZEBO_PLUGIN_PATH=/workspaces/consequential/gazebo_timeline_gui/build:$GAZEBO_PLUGIN_PATH
