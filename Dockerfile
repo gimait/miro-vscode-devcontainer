@@ -68,7 +68,7 @@ FROM osrf/ros:kinetic-desktop-full
 
 # Install tools
 RUN apt-get update \
-    && apt-get -y install build-essential cmake cppcheck valgrind htop git\
+    && apt-get -y install ssh build-essential cmake cppcheck valgrind htop\
     python python-matplotlib python-tk ffmpeg wget \
     net-tools python-pip
 RUN pip install --upgrade pip && \
@@ -82,6 +82,10 @@ RUN apt-get update \
     # Remove old gazebo
     && apt-get remove -y ros-kinetic-gazebo* \
     && apt-get install -y gazebo9 gazebo9-* ros-kinetic-gazebo9-*
+
+# Install git and git-lfs
+RUN curl -s https://packagecloud.io/install/repositories/github/git-lfs/script.deb.sh | bash
+RUN apt-get -y install git git-lfs
 
     # Clean up
 RUN rosdep update \
