@@ -70,10 +70,8 @@ FROM osrf/ros:kinetic-desktop-full
 RUN apt-get update \
     && apt-get -y install ssh build-essential cmake cppcheck valgrind htop\
     python python-matplotlib python-tk ffmpeg wget \
-    net-tools python-pip
-RUN pip install --upgrade pip && \
-    pip install apriltag signals flake8 && \
-    pip install getkey
+    net-tools python-pip python-flake8
+RUN python -m pip install flake8 apriltag getkey
 
 # Upgrade gazebo
 RUN echo "deb http://packages.osrfoundation.org/gazebo/ubuntu-stable `lsb_release -cs` main" > /etc/apt/sources.list.d/gazebo-stable.list
