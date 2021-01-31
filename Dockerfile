@@ -63,14 +63,14 @@ RUN cd /workspaces/ogre/ogre-1.9.1/build && \
     mkdir /tmp/libogre && \
     make DESTDIR=/tmp/libogre install
 
-# Add libraries to xenial
+# Build xenial container
 FROM osrf/ros:kinetic-desktop-full
 
 # Install tools
 RUN apt-get update \
     && apt-get -y install ssh build-essential cmake cppcheck valgrind htop\
     python python-matplotlib python-tk ffmpeg wget \
-    net-tools python-pip python-flake8
+    net-tools python-pip python-flake8 flake8
 RUN python -m pip install flake8 apriltag getkey
 
 # Upgrade gazebo
@@ -114,9 +114,7 @@ COPY --from=libogre /tmp/libogre/usr/local/lib/OGRE /usr/local/lib/OGRE
 COPY --from=libogre /tmp/libogre/usr/local/lib/pkgconfig /usr/lib/x86_64-linux-gnu/pkgconfig
 COPY --from=libogre /tmp/libogre/usr/local/include/OGRE /usr/local/include/OGRE
 
-
 # Add the devcontainer config
 COPY config/.bashrc /root/.bashrc
 RUN mkdir /root/.miro2/ && ln -s /workspaces/consequential/mdk/share/config /root/.miro2/config
 RUN ln -s /workspaces/consequential/mdk /root/mdk
-
