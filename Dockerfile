@@ -71,6 +71,7 @@ RUN apt-get update \
     && apt-get -y install ssh build-essential cmake cppcheck valgrind htop\
     python python-matplotlib python-tk ffmpeg wget \
     net-tools python-pip python-flake8 flake8
+RUN easy_install pip==20.3.4
 RUN python -m pip install flake8 apriltag getkey
 
 # Upgrade gazebo
