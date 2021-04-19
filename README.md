@@ -14,20 +14,13 @@ Prerequisites:
 
 Set up:
 
-1. Go to the MiRo-e [resource webpage](http://labs.consequentialrobotics.com/download.php?file=mdk_2-200131.tgz) and download the MDK. **The gazebo simulation will only work with mdk version 200131.**
+1. Go to the MiRo-e [resource webpage](http://labs.consequentialrobotics.com/miro-e/software/) and download the latest MDK version.
 
 2. Extract the mdk in your workspace:
 
     ```
     cd <path-to-download-dir>
     tar -xzvf mdk_2-200131.tgz --transform 's/mdk-200131/mdk/' -C <path-to-miro-workspace>
-    ```
-
-3. Go to your workspace and replace the gazebo lib to use gazebo9:
-
-    ```
-    cd <path-to-miro-workspace>
-    mv mdk/bin/deb64/libmiro_gazebo.so mdk/bin/deb64/libmiro_gazebo8.so && mv mdk/bin/deb64/libmiro_gazebo9.so mdk/bin/deb64/libmiro_gazebo.so
     ```
 
 4. Clone this repository and name it `.devcontainer`:
